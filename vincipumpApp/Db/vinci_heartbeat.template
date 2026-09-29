@@ -1,0 +1,16 @@
+# Monitor if any critical PV is in INVALID state, then set Online status
+record(calcout, "$(P)$(R)#Online") {
+    field(INPA, "$(P)$(R)Pressure-R.SEVR CP")
+    field(CALC, "!(A = 3)")
+    field(OUT,  "$(P)$(R)Online-RB PP")
+}
+
+# Represents status (OK/NOK) of the Online Signal
+record(bi, "$(P)$(R)Online-RB") {
+    field(DESC, "Online Signal")
+    field(ZNAM, "NOK")
+    field(ONAM, "OK")
+    field(DISP, "1")
+    field(ZSV,  "MAJOR")
+    field(OSV,  "NO_ALARM")
+}
